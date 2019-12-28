@@ -1,6 +1,6 @@
 # COSMOS-Telemetry-Experiment
 
-### 1. COSMOS Testbet
+### 1. COSMOS Testbed
 
 ![](img/COSMOS_optical_topology_V8.png)
 
