@@ -1,4 +1,11 @@
 """
+Author: Jiakai Yu, Shengxiang Zhu
+Code Goal: Telemetry Testing of transport system in COSMOS testbed
+Date: 01.2019
+"""
+
+
+"""
 Telemetry system scan spectrum to get channel power prediction and channel OSNR:
 
 0. Initialize devices:
@@ -79,8 +86,12 @@ DEMUX = '2'
 INSERVICE = 'in-service'
 
 
-USERNAME = 'superuser'
-PASSWORD = 'Sup%9User'
+USERNAME = '***'
+PASSWORD = '***'
+
+HOST = "10.104.1.111"
+PORT = "3082"
+AUTH = "***;\n"
 
 DEFAULT_WSS_LOSS = '4.0'
 ZERO_WSS_LOSS = '0.0'
@@ -498,32 +509,8 @@ def test_channel_power_prediction():
     print(calculate_predicted_channel_power_from_peak_voltage(488.0, -13.5, 18.0, 14276.0, 1))
 
 
-HOST = "10.104.1.111"
-PORT = "3082"
-AUTH = "ACT-USER::admin:::pxc***;\n"
 
-
-# R1 -> R2
-# TELEMETRY_TX_CONNECTION = "5.8.6>1.1.4"
-# TELEMETRY_RX_CONNECTION = "1.4.4>5.8.6"
-# TELEMETRY_RX_PARKING = "1.4.4>6.1.1"
-# ADD_NODE = ROADM1
-# DROP_NODE = ROADM2
-# POWER_CHECK_PORT = "1.4.4"
-# TELEMETRY_ADD_PORT_LOSS = "4.0"
-
-# R2 -> R6
-TELEMETRY_TX_CONNECTION = "5.8.6>1.4.4"
-TELEMETRY_RX_CONNECTION = "1.2.4>5.8.6"
-TELEMETRY_RX_PARKING = "1.2.4>6.1.1"
-ADD_NODE = ROADM2
-DROP_NODE = ROADM6
-POWER_CHECK_PORT = "1.2.4"
-TELEMETRY_ADD_PORT_LOSS = "18.0"
-
-
-POWER_CHECK_PORT_TELEMETRY_TX = "5.8.6"
-
+################## CALINET TELNET ##########
 
 def open_connection(host, port, auth):
     tn = telnetlib.Telnet(host, port)
@@ -586,6 +573,28 @@ def Del_CRS_Calient(HOST, PORT, AUTH, crs):
     tn.close()
 
 
+######################### CONTROL PARAMETERS ################
+    
+# R1 -> R2
+# TELEMETRY_TX_CONNECTION = "5.8.6>1.1.4"
+# TELEMETRY_RX_CONNECTION = "1.4.4>5.8.6"
+# TELEMETRY_RX_PARKING = "1.4.4>6.1.1"
+# ADD_NODE = ROADM1
+# DROP_NODE = ROADM2
+# POWER_CHECK_PORT = "1.4.4"
+# TELEMETRY_ADD_PORT_LOSS = "4.0"
+
+# R2 -> R6
+TELEMETRY_TX_CONNECTION = "5.8.6>1.4.4"
+TELEMETRY_RX_CONNECTION = "1.2.4>5.8.6"
+TELEMETRY_RX_PARKING = "1.2.4>6.1.1"
+ADD_NODE = ROADM2
+DROP_NODE = ROADM6
+POWER_CHECK_PORT = "1.2.4"
+TELEMETRY_ADD_PORT_LOSS = "18.0"
+
+POWER_CHECK_PORT_TELEMETRY_TX = "5.8.6"
+
 COM_FOR_ITLA = 'COM4'
 
 
@@ -612,6 +621,11 @@ time.sleep(5)
 
 # roadm = Lumentum(ROADM1)
 # connections = roadm.wss_get_connections()
+
+
+
+#################################################################################
+################################## START ########################################
 
 ## 0. Initialize devices
 # 0.1. Start SG985
