@@ -73,12 +73,12 @@ from ncclient import manager
 from ncclient.xml_ import to_ele
 
 
-ROADM1 = '10.104.1.1'
-ROADM2 = '10.104.1.2'
-ROADM3 = '10.104.1.3'
-ROADM4 = '10.104.1.4'
-ROADM5 = '10.104.1.5'
-ROADM6 = '10.104.1.6'
+ROADM1 = '***.***.***.1'
+ROADM2 = '***.***.***.2'
+ROADM3 = '***.***.***.3'
+ROADM4 = '***.***.***.4'
+ROADM5 = '***.***.***.5'
+ROADM6 = '***.***.***.6'
 LUMENTUM_PORT = '830'
 
 MUX = '1'
@@ -89,7 +89,7 @@ INSERVICE = 'in-service'
 USERNAME = '***'
 PASSWORD = '***'
 
-HOST = "10.104.1.111"
+HOST = "***.***.***.111"
 PORT = "3082"
 AUTH = "***;\n"
 
@@ -655,15 +655,15 @@ except Exception:
 
 # 0.6. Disable all ALS
 print('0.6. Disable all ALS')
-_ROADM_IP_1 = ['10.104.1.1', '10.104.1.2', '10.104.1.3', '10.104.1.4', '10.104.1.5', '10.104.1.6', '10.104.1.21',
-               '10.104.1.22', '10.104.1.23']
-_ROADM_IP_2 = ['10.104.1.21', '10.104.1.22', '10.104.1.23']
+_ROADM_IP_1 = ['***.***.***.1', '***.***.***.2', '***.***.***.3', '***.***.***.4', '***.***.***.5', '***.***.***.6', '***.***.***.21',
+               '***.***.***.22', '***.***.***.23']
+_ROADM_IP_2 = ['***.***.***.21', '***.***.***.22', '***.***.***.23']
 
 
 def ALS(IP, module):
     try:
         m = manager.connect(host=IP, port=830,
-                            username='superuser', password='Sup%9User',
+                            username=USERNAME, password=PASSWORD,
                             hostkey_verify=False)
 
         service1 = '''<disable-als xmlns="http://www.lumentum.com/lumentum-ote-edfa"><dn>ne=1;chassis=1;card=1;edfa=1</dn><timeout-period>600</timeout-period></disable-als>'''
