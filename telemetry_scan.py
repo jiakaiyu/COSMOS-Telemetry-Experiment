@@ -7,6 +7,9 @@ Date: 01.2019
 
 """
 Telemetry system scan spectrum to get channel power prediction and channel OSNR:
+Calient(Telnet)
+Lumentum(NETCONF)
+ITLA(serial)
 
 0. Initialize devices:
     0.1. Start SG985
